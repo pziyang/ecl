@@ -79,6 +79,7 @@ public:
 	enum {
 		COORD_METHOD_OPEN = 0,
 		COORD_METHOD_CLOSEACC = 1
+	    COORD_METHOD_RATE = 2
 	};
 
 protected:
