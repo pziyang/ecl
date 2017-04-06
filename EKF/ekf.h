@@ -351,6 +351,9 @@ private:
 	// imu fault status
 	uint64_t _time_bad_vert_accel;	// last time a bad vertical accel was detected (usec)
 
+    // variables used to control range aid functionality
+    bool _in_range_aid_mode;
+
 	// update the real time complementary filter states. This includes the prediction
 	// and the correction step
 	void calculateOutputStates();
@@ -475,7 +478,7 @@ private:
 	// control for combined height fusion mode (implemented for switching between baro and range height)
 	void controlHeightFusion();
 
-	bool rangeAidConditionsMet();
+    bool rangeAidConditionsMet(bool in_range_aid_mode);
 
 	// return the square of two floating point numbers - used in auto coded sections
 	inline float sq(float var)
