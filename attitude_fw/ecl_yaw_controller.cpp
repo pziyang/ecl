@@ -230,12 +230,12 @@ float ECL_YawController::control_attitude_impl_accclosedloop(const struct ECL_Co
 	_rate_setpoint =  ctl_data.yaw_setpoint;
 
 	/* limit the rate */
-	if (_max_rate > 0.01f && _max_rate_neg > 0.01f) {
+	if (_max_rate > 0.01f ) {
 		if (_rate_setpoint > 0.0f) {
 			_rate_setpoint = (_rate_setpoint > _max_rate) ? _max_rate : _rate_setpoint;
 
 		} else {
-			_rate_setpoint = (_rate_setpoint < -_max_rate_neg) ? -_max_rate_neg : _rate_setpoint;
+			_rate_setpoint = (_rate_setpoint < -_max_rate) ? -_max_rate : _rate_setpoint;
 		}
 	}
 	
