@@ -78,8 +78,7 @@ public:
 
 	enum {
 		COORD_METHOD_OPEN = 0,
-		COORD_METHOD_CLOSEACC = 1,
-	    COORD_METHOD_RATE = 2
+		COORD_METHOD_CLOSEACC = 1
 	};
 
 protected:
@@ -89,14 +88,10 @@ protected:
 	int32_t _coordinated_method;
 
 	float control_bodyrate_impl(const struct ECL_ControlData &ctl_data);
-	
-	float control_bodyrate_only(const struct ECL_ControlData &ctl_data);
 
 	float control_attitude_impl_openloop(const struct ECL_ControlData &ctl_data);
 
 	float control_attitude_impl_accclosedloop(const struct ECL_ControlData &ctl_data);
-	
-	float control_attitude_impl_rate(const struct ECL_ControlData &ctl_data);
 
 };
 
