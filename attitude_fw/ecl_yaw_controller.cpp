@@ -67,9 +67,6 @@ float ECL_YawController::control_attitude(const struct ECL_ControlData &ctl_data
 	case COORD_METHOD_CLOSEACC:
 		return control_attitude_impl_accclosedloop(ctl_data);
 		
-	case COORD_METHOD_RATE:
-		return control_attitude_impl_rate(ctl_data);
-
 	default:
 		static hrt_abstime last_print = 0;
 
@@ -88,8 +85,6 @@ float ECL_YawController::control_bodyrate(const struct ECL_ControlData &ctl_data
 	case COORD_METHOD_OPEN:
 	case COORD_METHOD_CLOSEACC:
 		return control_bodyrate_impl(ctl_data);
-	case COORD_METHOD_RATE:
-		return control_bodyrate_only(ctl_data);
 	default:
 		static hrt_abstime last_print = 0;
 
