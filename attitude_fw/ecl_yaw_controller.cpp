@@ -226,6 +226,18 @@ float ECL_YawController::control_bodyrate_impl(const struct ECL_ControlData &ctl
 
 float ECL_YawController::control_attitude_impl_accclosedloop(const struct ECL_ControlData &ctl_data)
 {
-	/* dont set a rate setpoint */
-	return 0.0f;
+    //rate_setpoint is identical to user input  
+	_rate_setpoint =  ctl_data.yaw_setpoint;
+
+	/* limit the rate */
+	if (_max_rate > 0.01f && _max_rate_neg > 0.01f) {
+		if (_rate_setpoint > 0.0f) {
+			_rate_setpoint = (_rate_setpoint > _max_rate) ? _max_rate : _rate_setpoint;
+
+		} else {
+			_rate_setpoint = (_rate_setpoint < -_max_rate_neg) ? -_max_rate_neg : _rate_setpoint;
+		}
+	}
+	
+	return _rate_setpoint;	
 }
